@@ -46,6 +46,13 @@
 * **Device Guard:** `DISABLED`.
 * **Fast Boot:** Can be `ENABLED` or `DISABLED` (Tested and found no impact).
 
+### Post-Configuration (Mandatory)
+Before using this EFI, you **MUST** generate your own SMBIOS information. Using the serials provided in any sample config will lead to iServices issues and potentially an Apple ID ban.
+
+* **Tool:** [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
+* **Model:** `MacBookPro16,2`
+* **Action:** Generate `Serial`, `Board Serial`, and `SmUUID` then paste them into your `config.plist` under `PlatformInfo > Generic`.
+
 ### Key Features & Important Notes
 
 #### 1. Graphics & External Display
