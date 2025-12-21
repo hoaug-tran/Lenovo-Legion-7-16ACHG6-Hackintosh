@@ -1,0 +1,61 @@
+name: Bug Report
+description: Create a report to help us improve the EFI for Legion 7.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! Please provide as much detail as possible.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please verify the following before submitting.
+      options:
+        - label: I have read the README and followed the BIOS/Setup instructions correctly.
+          required: true
+        - label: I have checked the Issue Tracker and confirmed this is not a duplicate.
+          required: true
+
+  - type: textarea
+    id: hardware-specs
+    attributes:
+      label: Hardware Specifications
+      description: Please list your exact hardware details (Especially SSD and Wifi Card).
+      placeholder: |
+        - CPU: Ryzen 9 5900HX
+        - RAM: 16GB / 32GB ...
+        - SSD: (e.g., Samsung 970 Evo, SKHynix...)
+        - Wifi Card: (e.g., Intel AX210, AX200...)
+        - BIOS Version:
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Issue Description
+      description: What happened? How can we reproduce the error?
+      placeholder: System freezes during boot at... / Wifi not working after sleep...
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots-logs
+    attributes:
+      label: Screenshots / Verbose Log
+      description: |
+        Crucial! Please drag and drop screenshots (Verbose text error) here.
+        If the system reboots, please attach the OpenCore log file if available.
+    validations:
+      required: false
+
+  - type: textarea
+    id: config-file
+    attributes:
+      label: Upload config.plist
+      description: |
+        Please upload your `config.plist` here (You can zip it or rename to .txt).
+        ⚠️ IMPORTANT: Remove your Serial Number, UUID, and MLB before uploading for security.
