@@ -112,6 +112,17 @@ The stock **SKHynix PC711 (HFS001TDE9X084N)** SSD is not compatible with macOS (
 | `SSDT-EXT3-WakeScreen` | Sleep/Wake patch (Part 2). |
 | `SSDT-SLEEP` | **Disables USB controller during sleep.** |
 
+### Recommended Apps & Tools
+
+Here are some essential tools to improve your Hackintosh experience on the Legion 7:
+
+| App | Description | Link |
+| :--- | :--- | :--- |
+| **Karabiner-Elements** | **Essential.** Use this to remap Function Keys (F1-F12) to work correctly like a real Mac (Brightness, Volume, etc.). | [Website](https://karabiner-elements.pqrs.org/) |
+| **Maccy** | The best lightweight, open-source clipboard manager. Beautiful UI/UX and very fast. | [GitHub](https://github.com/p0deje/Maccy) |
+| **Macs Fan Control** | Monitor CPU/GPU temperatures and control fans (Sensor support depends on `SMCProcessorAMD` kext). | [Website](https://crystalidea.com/macs-fan-control) |
+| **RunCat** | A cute utility that visualizes system usage (CPU/RAM/Network) with a running cat (or other animations) in the menu bar. | [Website](https://kyome.io/runcat/index.html?lang=en) |
+
 ## Credits
 
 * **Apple** for macOS.
