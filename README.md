@@ -134,5 +134,9 @@ Here are some essential tools to improve your Hackintosh experience on the Legio
   <i>If this project helped you, please give it a star! ⭐️</i>
 </p>
 <p align="center">
-  <img src="https://api.star-history.com/svg?repos=hoaug-tran/Lenovo-Legion-7-16ACHG6-Hackintosh&type=Date" alt="Star History Chart">
+  <a href="https://star-history.com/#hoaug-tran/Lenovo-Legion-7-16ACHG6-Hackintosh&Date">
+    <img src="https://api.star-history.com/svg?repos=hoaug-tran/Lenovo-Legion-7-16ACHG6-Hackintosh&type=date&legend=top-left&refresh=fix_ugly" alt="Star History Chart">
+  </a>
 </p>
+
+
