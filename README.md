@@ -54,7 +54,7 @@
 
 This repository may contain two EFI versions:
 1. **EFI Standard:** Stable OpenCore version.
-2. **EFI MOD (Dev):** [OpenCore Mod](https://github.com/wjz304/OpenCore_NO_ACPI_Build) version. This development version includes experimental fixes for cosmetic issues like the "Blue Screen" glitch and addresses dual-boot problems with Windows or other OSes.
+2. **EFI MOD (Dev):** [OpenCore Mod](https://github.com/wjz304/OpenCore_NO_ACPI_Build) version. This development version includes fixes for issues like the Blue Screen (BSOD) and addresses dual-boot problems with Windows or other OSes.
 
 ---
 
@@ -68,12 +68,12 @@ Using these ACPI patches will cause the fans to spin at maximum speed when booti
 ### 2. Incompatible SK Hynix SSD
 The stock SK Hynix PC711 SSD causes immediate Kernel Panics in macOS.
 * **Solution:** `SSDT-dSSD.aml` is included to hide this specific drive.
-* **Action:** If you do not have this drive, **delete** this SSDT, or your compatible drive will be hidden.
+* **Action:** If you do not have this drive, **delete** this SSDT; otherwise, your compatible drive will be hidden. If you want to use it, please replace the PCI Path in the SSDT with your NVMe Controller (the unsupported SSD Controller).
 
 ### 3. Display Refresh Rate (165Hz vs 120Hz)
 The display is limited to **120Hz** in macOS.
 * **Reason:** The 165Hz timing requires high bandwidth and compression (DSC) that the Vega 8 driver (Nootedred problems maybe) does not support over eDP.
-* **Fix:** Copy the provided display override folder to `/Library/Displays/Contents/Resources/Overrides/` to ensure HiDPI and 120Hz options are available.
+* **Fix:** To enable HiDPI and 120Hz options, copy the provided display override folder to `/Library/Displays/Contents/Resources/Overrides/`. You can download it [here](https://github.com/hoaug-tran/Lenovo-Legion-7-16ACHG6-Hackintosh/blob/main/Fix-hz-hidpi.zip). Simply extract the files and place them into the Overrides folder (if the path doesn't exist, please create it manually).
 
 ---
 
