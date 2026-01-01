@@ -23,7 +23,7 @@
 >
 > **SMBIOS Required:** If you decide to use this EFI, you **must** generate your own Serial Number, Board Serial, and SmUUID using [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS). The values in this config are generic and invalid.
 >
-> **macOS Version:** This setup is validated for **macOS Ventura (13.6)**. Newer versions (Sonoma/Sequoia) have not been tested thoroughly by me, though they likely work with minor adjustments to Wi-Fi kexts, AMD Kernel Patches, ...
+> **macOS Version:** This setup is validated for **macOS Ventura (13.6)**. Newer versions (Sonoma/Sequoia) have not been tested thoroughly by me, though they likely work with minor adjustments to Wi-Fi kexts, AMD Kernel patches, ...
 
 > [!WARNING]
 > **Data Safety:** Modifying BIOS and EFI settings involves risk. Always backup your data before proceeding.
