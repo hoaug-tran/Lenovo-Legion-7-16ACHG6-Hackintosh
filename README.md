@@ -39,7 +39,7 @@
 | **Discrete GPU** | NVIDIA RTX 3080 | **Disabled** | Unsupported. Disabled via software (boot-arg). |
 | **Display** | 16" WQXGA (2560x1600) | **Working** | Max 120Hz (Panel is 165Hz). |
 | **External Video** | HDMI / USB-C DP | **Not Working** | Hardwired to the disabled NVIDIA GPU. |
-| **Audio** | Realtek ALC287 | **Working** | Speakers and Mic functioning. |
+| **Audio** | Realtek ALC287 | **Partial** | See Audio Details below. |
 | **Wi-Fi** | Intel Wi-Fi 6 AX210 | **Working** | Native speeds via AirportItlwm. |
 | **Bluetooth** | Intel Bluetooth | **Working** | |
 | **Ethernet** | Realtek RTL8111 | **Working** | |
@@ -47,6 +47,18 @@
 | **Trackpad** | I2C HID | **Working** | Full multi-touch gestures. |
 | **Storage** | SUNEAST Gen4 G55 | **Working** | |
 | **Storage (OEM)** | SK Hynix PC711 | **Incompatible** | Must be disabled (See Critical Notes). |
+
+### Audio Detailed Status
+| Device | Status | Notes |
+| :--- | :--- | :--- |
+| **Internal Speakers** | **Not Working** | Requires a dedicated driver for the Cirrus Amp and bad new that we don't have any kext like that |
+| **Headphones (3.5mm)** | **Working** | Clear sound, automatic switching. |
+| **Internal Microphone** | **Working** | Properly recognized and functional. |
+
+> [!IMPORTANT]
+> **The Cirrus Logic Amp Issue**
+> 
+> The internal speakers do not work because this laptop uses a **Cirrus Logic Awesome Speaker Amps** (CS35L41) connected via the **I2C bus**. While the Realtek ALC287 codec is recognized, it cannot communicate with this amplifier chip without a dedicated driver. There is no solution right now.
 
 ---
 
