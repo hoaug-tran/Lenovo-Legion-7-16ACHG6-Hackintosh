@@ -39,7 +39,7 @@
 | **Discrete GPU** | NVIDIA RTX 3080 | **Disabled** | Unsupported. Disabled via software (boot-arg). |
 | **Display** | 16" WQXGA (2560x1600) | **Working** | Max 120Hz (Panel is 165Hz). |
 | **External Video** | HDMI / USB-C DP | **Not Working** | Hardwired to the disabled NVIDIA GPU. |
-| **Audio** | Realtek ALC287 | **Partial** | See Audio Details below. |
+| **Audio** | Realtek ALC287 + CS35L41 | **Working** | Fully working via CirrusAudioFixup (See Audio Details below). |
 | **Wi-Fi** | Intel Wi-Fi 6 AX210 | **Working** | Native speeds via AirportItlwm. |
 | **Bluetooth** | Intel Bluetooth | **Working** | |
 | **Ethernet** | Realtek RTL8111 | **Working** | |
@@ -51,14 +51,24 @@
 ### Audio Detailed Status
 | Device | Status | Notes |
 | :--- | :--- | :--- |
-| **Internal Speakers** | **Not Working** | Requires a dedicated driver for the Cirrus Amp and bad new that we don't have any kext like that |
-| **Headphones (3.5mm)** | **Working** | Clear sound, automatic switching. |
-| **Internal Microphone** | **Working** | Properly recognized and functional. |
+| **Internal Speakers** | **Working** | Powered by dual Cirrus Logic CS35L41 amps via [CirrusAudioFixup](https://github.com/hoaug-tran/CirrusAudioFixup). |
+| **Headphones (3.5mm)** | **Working** | Clear sound, automatic jack switching via AppleALC layout-id 16. |
+| **Internal Microphone** | **Working** | Functional via Realtek ALC287 layout-id 16. |
 
-> [!IMPORTANT]
-> **The Cirrus Logic Amp Issue**
+> [!TIP]
+> **Internal Speakers Solution: CirrusAudioFixup**
 > 
-> The internal speakers do not work because this laptop uses a **Cirrus Logic Awesome Speaker Amps** (CS35L41) connected via the **I2C bus**. While the Realtek ALC287 codec is recognized, it cannot communicate with this amplifier chip without a dedicated driver. There is no solution right now.
+> The internal speakers on Lenovo Legion 7 (16ACHg6) are driven by dual **Cirrus Logic CS35L41** digital smart amplifiers connected over the I2C bus (`CLSA0100`). Realtek ALC287 alone cannot communicate with these amplifiers without a dedicated driver.
+> 
+> This hardware limitation is now resolved by **[CirrusAudioFixup](https://github.com/hoaug-tran/CirrusAudioFixup)**!
+> 
+> **To enable internal speakers:**
+> 1. Download the prebuilt kext trio bundle from [CirrusAudioFixup Kexts.zip](https://github.com/hoaug-tran/CirrusAudioFixup/raw/main/docs/Kexts.zip) (or grab the latest release from [CirrusAudioFixup Releases](https://github.com/hoaug-tran/CirrusAudioFixup/releases/latest)).
+> 2. Include the required kexts in your OpenCore `config.plist` in load order:
+>    - `VoodooI2C.kext` (custom build exporting `VoodooI2CTransferToAddress`)
+>    - `AppleALC.kext` (with ALC287 layout-id 16, boot-arg `alcid=16`)
+>    - `CirrusAudioFixup.kext` (CS35L41 amplifier driver)
+> 3. Refer to the [CirrusAudioFixup Safe Bring-up Protocol](https://github.com/hoaug-tran/CirrusAudioFixup/blob/main/docs/safe_bringup_protocol.md) for step-by-step verification and diagnostic telemetry.
 
 ---
 
@@ -133,8 +143,9 @@ I rely on **`USBPorts.kext`** for a clean, driver-less map.
 | **CpuTscSync** | Critical fix for wake freezing. |
 | **AirportItlwm** | Wi-Fi support. |
 | **IntelBluetoothFirmware** | Bluetooth firmware. |
-| **AppleALC** | Audio driver. |
-| **VoodooI2C / HID** | Trackpad support. |
+| **AppleALC** | Audio driver (ALC287 layout-id 16). |
+| **CirrusAudioFixup** | Driver for dual Cirrus Logic CS35L41 smart amplifiers (enables internal speakers). |
+| **VoodooI2C / HID** | Trackpad support & I2C bus transport for CS35L41 amps. |
 | **VoodooPS2Controller** | Keyboard support. |
 | **RealtekRTL8111** | Ethernet support. |
 | **USBPorts** | Custom USB Map. |
